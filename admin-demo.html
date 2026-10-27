@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Owner Dashboard Demo | Midnight Reads</title><meta name="robots" content="noindex,nofollow"><link rel="stylesheet" href="styles.css">
+<style>
+.admin-wrap{max-width:1160px;margin:2rem auto;padding:0 1.2rem}.admin-head{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap}.admin-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1rem;margin:1.5rem 0}.metric,.admin-panel{background:var(--panel);border:1px solid var(--line);padding:1.2rem;min-width:0}.metric span{display:block;color:var(--muted);font-size:.8rem}.metric strong{font:2rem "Playfair Display",Georgia,serif;color:var(--gold)}.admin-layout{display:grid;grid-template-columns:220px 1fr;gap:1rem}.admin-nav{display:flex;flex-direction:column;gap:.4rem}.admin-nav button{background:var(--panel);border:1px solid var(--line);color:var(--text);padding:.8rem;text-align:left;cursor:pointer}.admin-nav button[aria-selected=true]{border-color:var(--gold);color:var(--gold)}.admin-panel h2{font:1.6rem "Playfair Display",Georgia,serif;margin-top:0}.admin-panel p,.admin-panel li{color:var(--muted);font-size:.9rem}.demo-warning{border-left:3px solid var(--rose);padding:.8rem 1rem;background:#241a24;color:var(--text);margin:1rem 0}.fake-field{width:100%;padding:.8rem;background:#101018;border:1px solid var(--line);color:var(--text);margin:.3rem 0 1rem}.small-btn{background:var(--gold);border:0;padding:.7rem 1rem;font-weight:bold;cursor:pointer;color:#15131a}.hidden{display:none}@media(max-width:760px){.admin-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.admin-layout{grid-template-columns:1fr}.admin-nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}}
+</style></head>
+<body>
+<header class="site-header"><a class="brand" href="index.html"><span class="brand-mark">✦</span><span>Midnight <b>Reads</b></span></a><a class="text-link" href="index.html">← View storefront</a></header>
+<main class="admin-wrap">
+<div class="admin-head"><div><p class="eyebrow">OWNER AREA · UI PREVIEW</p><h1 style="font:2.5rem 'Playfair Display',Georgia,serif;margin:0">Store dashboard</h1></div><span class="button button-small">Owner-only planned</span></div>
+<div class="demo-warning"><strong>Prototype only — not secure.</strong> This page is a visual demo, not a real authenticated admin system. Do not upload real ad code, private keys, customer data, or payment information here. A real owner-only dashboard requires server-side authentication and a database.</div>
+<div class="admin-grid">
+<div class="metric"><span>Visits · demo</span><strong>—</strong><small>Connect analytics to display real data</small></div>
+<div class="metric"><span>Orders · demo</span><strong>—</strong><small>Database not connected</small></div>
+<div class="metric"><span>Book listings</span><strong>3</strong><small>Sample listings only</small></div>
+<div class="metric"><span>Ad units</span><strong>0</strong><small>No ad networks connected</small></div>
+</div>
+<div class="admin-layout">
+<div class="admin-nav" role="tablist" aria-label="Dashboard sections">
+<button role="tab" aria-selected="true" data-panel="overview">Overview</button>
+<button role="tab" aria-selected="false" data-panel="books">Books</button>
+<button role="tab" aria-selected="false" data-panel="ads">Ad management</button>
+<button role="tab" aria-selected="false" data-panel="seo">SEO checks</button>
+<button role="tab" aria-selected="false" data-panel="orders">Orders & payments</button>
+<button role="tab" aria-selected="false" data-panel="settings">Store settings</button>
+</div>
+<div>
+<section class="admin-panel" id="panel-overview"><h2>Welcome, owner</h2><p>This dashboard is planned to become the single place to manage the store. Live analytics, orders, and revenue will appear only after their data sources are connected.</p><ul><li>Connect analytics for traffic reports.</li><li>Connect a database for products and orders.</li><li>Configure secure owner login before launch.</li></ul></section>
+<section class="admin-panel hidden" id="panel-books"><h2>Book catalogue</h2><p>Planned controls: create and edit book listings, upload covers and files, manage prices, descriptions, categories, publication status, and SEO metadata.</p><p>Book uploads and edits will be stored in a database and private file storage—not in this demo page.</p></section>
+<section class="admin-panel hidden" id="panel-ads"><h2>Advertisement management</h2><p>Planned controls: add approved ad units, choose placement, enable/disable units, and set device visibility where the network permits it.</p><label for="ad-name">Ad unit label (demo only)</label><input id="ad-name" class="fake-field" placeholder="e.g. Adsterra — inline banner" disabled><label for="ad-code">Ad code (disabled in prototype)</label><textarea id="ad-code" class="fake-field" rows="4" placeholder="Real ad code entry will be added to the secure admin app." disabled></textarea><p>Ad network earnings must come from the network dashboard or an approved reporting integration; visits alone do not equal ad revenue.</p></section>
+<section class="admin-panel hidden" id="panel-seo"><h2>SEO checklist</h2><ul><li>Unique title and meta description per indexable page.</li><li>Canonical URLs updated to the final site address.</li><li>XML sitemap and robots.txt use the final site address.</li><li>Product structured data matches real product information.</li><li>Private/admin pages are not indexable.</li><li>Images are compressed and have useful alt text.</li></ul><p>Search ranking cannot be guaranteed. Search Console data will be available after setup and verification.</p></section>
+<section class="admin-panel hidden" id="panel-orders"><h2>Orders & payments</h2><p>No payment is active in this prototype. Before selling, implement server-side order records, verify USDT TRC-20 transfers on-chain, protect download links, and test underpayment, duplicate transactions, and delayed confirmations.</p></section>
+<section class="admin-panel hidden" id="panel-settings"><h2>Store settings</h2><p>Planned controls: store name, logo, theme, homepage content, legal pages, contact details, and owner account security.</p><p>Never store passwords, wallet seed phrases, private keys, or API secrets in public site files or GitHub.</p></section>
+</div></div>
+</main>
+<script>
+const tabs=[...document.querySelectorAll('[role="tab"]')];
+tabs.forEach(tab=>tab.addEventListener('click',()=>{
+ tabs.forEach(t=>t.setAttribute('aria-selected',String(t===tab)));
+ document.querySelectorAll('[id^="panel-"]').forEach(p=>p.classList.toggle('hidden',p.id!=='panel-'+tab.dataset.panel));
+}));
+</script>
+</body></html>
