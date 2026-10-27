@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /admin/
-Disallow: /private/
-Sitemap: https://YOUR-DOMAIN-OR-SITE-URL/sitemap.xml
+
+Sitemap: https://alieaso.github.io/midnight-reads/sitemap.xml
